@@ -27,7 +27,7 @@ EMAIL_RECEPIENTS = "a@b.com,c@d.com"  # comma delimited list or a plain list
 
 functions:
   notify:
-    handler: django_serverless_emailer/handler.notify
+    handler: path/to/handler.send_email
     description: Send an email when there's something in the queue
     layers:
       - { Ref: PythonRequirementsLambdaLayer }
@@ -40,4 +40,21 @@ functions:
             Fn::GetAtt:
               - ErrorNotificationDlq
               - Arn
+```
+
+```python
+# handler.py
+
+import django
+import os
+
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "setup.settings")
+django.setup()
+
+from django_serverless_emailer.handler import notify
+
+
+def send_email(event, _):
+    notify(event, _)
+
 ```
