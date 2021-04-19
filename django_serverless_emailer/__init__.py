@@ -1,1 +1,1 @@
-from django_serverless_emailer.core import notify
+from django_serverless_emailer.core import send_notification_email
