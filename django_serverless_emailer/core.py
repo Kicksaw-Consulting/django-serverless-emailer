@@ -11,6 +11,7 @@ def notify(event, _):
     records = event["Records"]
 
     for record in records:
+        print(record)
         body = json.loads(record["body"])
         detail = body["detail"]
         detail_type = body["detail-type"]
@@ -23,7 +24,7 @@ def notify(event, _):
         region = settings.AWS_REGION
 
         html = render_to_string(
-            "notification.html",
+            "django_serverless_emailer/step-function.html",
             {"region": region, "execution_arn": execution_arn, "input": input_},
         )
         plain = strip_tags(html)
