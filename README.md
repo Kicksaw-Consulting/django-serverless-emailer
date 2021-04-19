@@ -42,10 +42,10 @@ import os
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "setup.settings")
 django.setup()
 
-from django_serverless_emailer import notify
+from django_serverless_emailer import send_notification_email
 
 
 def send_email(event, _):
-    notify(event, _)
+    send_notification_email(event, _)
 
 ```
