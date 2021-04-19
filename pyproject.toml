@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "django-serverless-emailer"
-version = "0.2.0"
+version = "0.3.0"
 description = "Provides a lambda handler for sending emails concerning errors in AWS"
 license = "MIT"
 readme = "README.md"
